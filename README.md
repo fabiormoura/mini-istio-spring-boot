@@ -37,18 +37,22 @@ kubectl apply -f kube/istio/istio.yaml
 eval $(minikube docker-env)
 mvn clean install -f sample-services
 
-docker build -t sample-web-service-a:0.0.5 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
-docker build -t sample-web-service-b:0.0.1 -f sample-services/sample-web-service-b/docker/Dockerfile sample-services/sample-web-service-b
+docker build -t sample-web-service-a:0.0.6 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
+docker build -t sample-web-service-b:0.0.2 -f sample-services/sample-web-service-b/docker/Dockerfile sample-services/sample-web-service-b
 ```
 
 # Deploy Sample Services
 ```
 kubectl apply -f kube/sample-web-service-a/deployment.yaml -n sample
 kubectl apply -f kube/sample-web-service-a/service.yaml -n sample
+
+kubectl apply -f kube/sample-web-service-b/deployment.yaml -n sample
+kubectl apply -f kube/sample-web-service-b/service.yaml -n sample
 ```
 
 # Apply all istio rules
 ```
+kubectl apply -f kube/sample-istio-rules/policies.yaml -n sample
 kubectl apply -f kube/sample-istio-rules/service-entries.yaml -n sample
 ```
 
@@ -69,3 +73,6 @@ helm template tmp/istio-${ISTIO_VERSION}/install/kubernetes/helm/istio \
 --set tracing.enabled=false \
 > kube/istio/istio.yaml
 ```
+
+# Technical Resources
+* https://github.com/srinandan/istio-workshop

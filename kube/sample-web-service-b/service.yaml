@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: sample-web-service-b
+  labels:
+    app: sample-web-service-b
+spec:
+  selector:
+    app: sample-web-service-b
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080

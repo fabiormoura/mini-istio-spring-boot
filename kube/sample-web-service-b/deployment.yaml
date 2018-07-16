@@ -1,26 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-web-service-a
+  name: sample-web-service-b
   labels:
-    app: sample-web-service-a
+    app: sample-web-service-b
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sample-web-service-a
+      app: sample-web-service-b
   template:
     metadata:
       labels:
-        app: sample-web-service-a
+        app: sample-web-service-b
     spec:
       containers:
       - name: service
-        image: sample-web-service-a:0.0.6
+        image: sample-web-service-b:0.0.2
         imagePullPolicy: Never
-        env:
-        - name: SAMPLE_WEB_SERVICE_B_ENDPOINT
-          value: "http://sample-web-service-b:8080"
         ports:
         - containerPort: 8080
         resources:
