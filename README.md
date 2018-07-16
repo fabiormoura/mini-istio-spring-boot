@@ -37,7 +37,7 @@ kubectl apply -f kube/istio/istio.yaml
 eval $(minikube docker-env)
 mvn clean install -f sample-services
 
-docker build -t sample-web-service-a:0.0.2 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
+docker build -t sample-web-service-a:0.0.3 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
 ```
 
 # Deploy Sample Services
