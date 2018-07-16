@@ -93,7 +93,7 @@ docker build -t sample-web-service-a:0.0.6 -f sample-services/sample-web-service
 docker build -t sample-web-service-b:0.0.2 -f sample-services/sample-web-service-b/docker/Dockerfile sample-services/sample-web-service-b
 ```
 
-## Deploying Sample Services
+### Deploying Sample Services
 ```
 kubectl apply -f kube/sample-web-service-a/deployment.yaml -n sample
 kubectl apply -f kube/sample-web-service-a/service.yaml -n sample
