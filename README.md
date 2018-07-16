@@ -56,7 +56,7 @@ helm template tmp/istio-${ISTIO_VERSION}/install/kubernetes/helm/istio \
 --name istio \
 --namespace istio-system \
 --set global.mtls.enabled=true \
---set global.controlPlaneSecurityEnabled=false \
+--set global.controlPlaneSecurityEnabled=true \
 --set grafana.enabled=false \
 --set prometheus.enabled=false \
 --set servicegraph.enabled=false \
