@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-web-service-a
+  labels:
+    app: sample-web-service-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-web-service-a
+  template:
+    metadata:
+      labels:
+        app: sample-web-service-a
+    spec:
+      containers:
+      - name: service
+        image: sample-web-service-a:0.0.2
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+#        livenessProbe:
+#          httpGet:
+#            path: /actuator/health
+#            port: 8080
+#        readinessProbe:
+#          httpGet:
+#            path: /actuator/health
+#            port: 8080

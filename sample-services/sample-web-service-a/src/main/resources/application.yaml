@@ -1,0 +1,2 @@
+spring.application.name: sample-web-service-a
+management.endpoints.enabled-by-default: true

@@ -21,12 +21,31 @@ minikube start --vm-driver=hyperkit --cpus=3 --memory=4096
 kubectl get nodes
 ```
 
+# Create all namespaces
+```
+kubectl apply -f kube/namespaces/istio-namespace.yaml
+kubectl apply -f kube/namespaces/sample.yaml
+```
+
 # Configure Istio
 ```
-kubectl apply -f kube/istio-namespace.yaml
-kubectl apply -f kube/istio.yaml
-
+kubectl apply -f kube/istio/istio.yaml
 ```
+
+# Build Sample Services
+```
+eval $(minikube docker-env)
+mvn clean install -f sample-services
+
+docker build -t sample-web-service-a:0.0.2 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
+```
+
+# Deploy Sample Services
+```
+kubectl apply -f kube/sample-web-service-a/deployment.yaml -n sample
+kubectl apply -f kube/sample-web-service-a/service.yaml -n sample
+```
+
 
 # Upgrade Istio
 ```
@@ -37,10 +56,10 @@ helm template tmp/istio-${ISTIO_VERSION}/install/kubernetes/helm/istio \
 --name istio \
 --namespace istio-system \
 --set global.mtls.enabled=true \
---set grafana.enabled=false \
+--set global.controlPlaneSecurityEnabled=false \
 --set grafana.enabled=false \
 --set prometheus.enabled=false \
 --set servicegraph.enabled=false \
 --set tracing.enabled=false \
-> kube/istio.yaml
+> kube/istio/istio.yaml
 ```
