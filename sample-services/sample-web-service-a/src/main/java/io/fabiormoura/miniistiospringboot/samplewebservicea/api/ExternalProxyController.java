@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class ExternalHitterController {
+public class ExternalProxyController {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public ExternalHitterController(RestTemplate restTemplate) {
+    public ExternalProxyController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    @RequestMapping(value = "/externals/google", method = RequestMethod.GET)
+    @RequestMapping(value = "/proxy/google", method = RequestMethod.GET)
     public ResponseEntity<String> google() {
         return restTemplate.getForEntity("https://www.google.com/", String.class);
     }

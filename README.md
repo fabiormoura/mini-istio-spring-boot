@@ -38,6 +38,7 @@ eval $(minikube docker-env)
 mvn clean install -f sample-services
 
 docker build -t sample-web-service-a:0.0.5 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
+docker build -t sample-web-service-b:0.0.1 -f sample-services/sample-web-service-b/docker/Dockerfile sample-services/sample-web-service-b
 ```
 
 # Deploy Sample Services

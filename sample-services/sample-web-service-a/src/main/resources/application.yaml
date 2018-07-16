@@ -1,2 +1,4 @@
 spring.application.name: sample-web-service-a
 management.endpoints.enabled-by-default: true
+
+sample-web-service-b.endpoint: http://localhost:8081

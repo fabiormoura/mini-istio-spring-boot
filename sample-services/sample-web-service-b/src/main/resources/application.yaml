@@ -1,0 +1,3 @@
+spring.application.name: sample-web-service-b
+server.port: 8081
+management.endpoints.enabled-by-default: true

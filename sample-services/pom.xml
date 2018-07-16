@@ -20,6 +20,7 @@
 
     <modules>
         <module>sample-web-service-a</module>
+        <module>sample-web-service-b</module>
     </modules>
 
     <properties>

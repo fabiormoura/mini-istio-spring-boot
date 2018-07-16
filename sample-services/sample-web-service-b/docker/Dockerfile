@@ -6,4 +6,5 @@ RUN apk add --no-cache --update curl
 
 ADD target/*.jar /app/service.jar
 
+
 CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/app/service.jar"]
