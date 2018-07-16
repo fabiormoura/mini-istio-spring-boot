@@ -37,13 +37,18 @@ kubectl apply -f kube/istio/istio.yaml
 eval $(minikube docker-env)
 mvn clean install -f sample-services
 
-docker build -t sample-web-service-a:0.0.3 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
+docker build -t sample-web-service-a:0.0.5 -f sample-services/sample-web-service-a/docker/Dockerfile sample-services/sample-web-service-a
 ```
 
 # Deploy Sample Services
 ```
 kubectl apply -f kube/sample-web-service-a/deployment.yaml -n sample
 kubectl apply -f kube/sample-web-service-a/service.yaml -n sample
+```
+
+# Apply all istio rules
+```
+kubectl apply -f kube/sample-istio-rules/service-entries.yaml -n sample
 ```
 
 
